@@ -123,33 +123,64 @@
         </div>
     </div>
 
-    <script>
-const priceInput = document.getElementById('price');
-  const submitButton = document.getElementById('submit');
 
-  priceInput.addEventListener('focus', function() {
+ 
+    <script>
+      
+const priceInput = document.getElementById('price');
+const submitButton = document.getElementById('submit');
+
+// Function to format the input value with commas
+function formatNumber(value) {
+    // Remove any non-digit characters except for the decimal point
+    const cleanedValue = value.replace(/[^0-9.]/g, '');
+
+    // Split the value into integer and decimal parts
+    const [integerPart, decimalPart] = cleanedValue.split('.');
+
+    // Add commas to the integer part
+    const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+    // Combine the integer and decimal parts if there's a decimal part
+    if (decimalPart !== undefined) {
+        return `${formattedInteger}.${decimalPart}`;
+    } else {
+        return formattedInteger;
+    }
+}
+
+// Event listener for input event
+priceInput.addEventListener('input', function (e) {
+    // Remove the Naira sign for processing
+    const inputValue = e.target.value.replace('₦ ', '');
+
+    // Format the number
+    const formattedValue = formatNumber(inputValue);
+
+    // Update the input value with the Naira sign and the formatted value
+    e.target.value = `₦ ${formattedValue}`;
+});
+
+// Keep the Naira sign fixed and handle deletion
+priceInput.addEventListener('focus', function() {
     if (this.value === '') {
         this.value = '₦ ';
-}
+    }
 });
 
-priceInput.addEventListener('input', function() {
-  if (!this.value.startsWith('₦ ')) {
-    this.value = '₦ ' + this.value.replace(/^\₦/, '');
-}
+priceInput.addEventListener('keydown', function(event) {
+    if (this.selectionStart === 1 && (event.key === 'Backspace' || event.key === 'Delete')) {
+        event.preventDefault();
+    }
 });
 
-  priceInput.addEventListener('keydown', function(event) {
-  if (this.selectionStart === 1 && (event.key === 'Backspace' || event.key === 'Delete')) {
-     event.preventDefault();
-}
-});
-
-  submitButton.addEventListener('click', function() {
+submitButton.addEventListener('click', function() {
     const priceValue = priceInput.value;
     const numericValue = priceValue.replace('₦ ', '');
-  window.location.href = `Successful.html?price=${numericValue}`;
+    window.location.href = `Successful.html?price=${numericValue}`;
 });
+
+
     </script>
     
 </body>
