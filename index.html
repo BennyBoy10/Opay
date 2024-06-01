@@ -52,6 +52,9 @@
   color: #DBA54B;
   background-color: #FAEEE2;
 }
+.announcement p {
+  margin-top: 5px;
+}
 .balance {
   width: 320px;
   height: 75px;
@@ -73,6 +76,9 @@
   color: #00B875;
   background-color: #fff;
 }
+.add p {
+margin-top: 8px;
+}
 .transfer {
   display: flex;
   margin-top: 7px;
@@ -84,14 +90,14 @@
 .waste {
   margin-top: 7px;
   width: 340px;
-  height: 140px;
+  height: 155px;
   border-radius: 10px;
   background-color: #fff;
 }
 .waste img {
   margin: 0px;
   width: 340px;
-  height: 140px;
+  height: 155px;
   border-radius: 7px;
 }
 .grab {
@@ -126,7 +132,7 @@
     
 </head>
 <body>
-        <div class="container"><br></br><br>
+        <div class="container"><br>
      <div class="profile-pic">
 <a href="">
   <img src="https://i.ibb.co/W23yswk/Benny.jpg" alt="Profile-Pic"></a>
@@ -140,9 +146,14 @@
                 </div>
   
         <div class="balance">
-<p>🛡️ Available Balance 👁 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Transaction History ></span></p>
- 
- <h2>&nbsp;&nbsp;<span>&#8358;</span>52,000.00</h2>
+
+ <p>🛡️ Available Balance 
+  <span id="eye-icon" style="cursor: pointer;">👁</span> 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span>Transaction History ></span>
+</p>
+<h2>&nbsp;&nbsp;<span>&#8358;</span><span id="balance-amount">52,000.00</span></h2>
+
            <div class="add">
    <p>&nbsp;&nbsp; + Add Money &nbsp;&nbsp;&nbsp;</p>
           </div>
@@ -168,5 +179,19 @@
 
 </div>
 
+
+<script>
+document.getElementById("eye-icon").addEventListener("click", function() {
+  var balanceAmount = document.getElementById("balance-amount");
+  if (balanceAmount.textContent === "52,000.00") {
+    balanceAmount.innerHTML = '<span style="color: white; font-weight: bold;"> ***</span>';
+  } else {
+    balanceAmount.textContent = "52,000.00";
+  }
+});
+</script>
+
+
 </body>
-</html>
+    </html>
+    
