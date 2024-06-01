@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
+    
+    <title>Opay</title>
+    
+    <style>
+  body {
+   font-family: Arial, sans-serif;
+   background-color: #fff;
+   margin: 0;
+   padding: 0;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+.container {
+  margin: 0 auto;
+  width: 350px;
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  /*background-color: #000000;*/
+  background-color: #F8F8FA;
+}
+.back {
+  margin-bottom: 5px;
+  width: 350px;
+  height: 50px;
+  align-content: center;
+  background-color: #fff;
+}
+.free-transfer img {
+  width: 350px;
+  border-radius: 7px;
+}
+.aza {
+  padding: 0.5px 10px;
+  width: 330px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.aza input:focus {
+  border: 1px solid transparent;
+  outline: none;
+}
+.aza input[type="tel"] {
+  width: 305px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 17px;
+  border: 1px solid #f2f2f2;
+}
+.aza input::placeholder {
+  color: #C6C6C6;
+}
+.aza select {
+  margin-top: 5px;
+  width: 330px;
+  height: 50px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 17px;
+  border: 1px solid #f2f2f2;
+  background-color: #fff;
+}
+.aza #name {
+  display: none;
+  margin-top: 5px;
+  width: 305px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 17px;
+  text-transform: uppercase;
+  border: 1px solid #f2f2f2;
+  color: #03B776;
+  background-color: #F0FBF7;
+}
+.button-container {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ button {
+   margin: 8px 0 3px 0;
+   width: 280px;
+   height: 45px;
+   border-radius: 25px;
+   font-size: 19px;
+   border: 1px solid transparent;
+   color: #fff;
+   background-color: #00B875;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #17B286;
+}
+.traffic-monitor {
+  margin-top: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.traffic-monitor img {
+  border-radius: 8px;
+}
+.recents {
+  display: flex;
+  margin-top: 5px;
+  width: 350px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  color: #7e7e7e;
+  background-color: #fff;
+}
+.recents p {
+  margin-left: 20px;
+}
+.all-accounts {
+  background-color: transparent;
+}
+.accounts {
+  padding: 3px;
+  margin-top: -14px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+.accounts p{
+  margin-top: 8px;
+  margin-left: 20px;
+}
+.accounts img {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 310px;
+  width: 30px;
+  height: 30px;
+}
+.accounts2 {
+  margin-top: -14px;
+  padding: 3px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+.accounts2 p{
+  margin-top: 8px;
+  margin-left: 20px;
+}
+.accounts2 img {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 300px;
+  width: 50px;
+  height: 40px;
+}
+.accounts3 {
+  margin-top: -14px;
+  padding: 3px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+.accounts3 p{
+  margin-top: 8px;
+  margin-left: 20px;
+}
+.accounts3 img {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 300px;
+  width: 50px;
+  height: 40px;
+}
+.view-all {
+  margin-top: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  background-color: #fff;
+}
+.view-all p {
+  padding: 5px;
+  border-radius: 15px;
+  color: #a2a2a2;
+  background-color: #F8F8FA;
+}
+    </style>
+    
+</head>
+<body>
+        <div class="container"><br>
+
+          <div class="back">
+   <p>&nbsp;&nbsp;&nbsp;<b><</b>&nbsp;&nbsp;&nbsp; Transfer to Bank Account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00B875;">History</span></p>
+              </div>
+      
+       <div class="free-transfer">
+   <img src="Images/Free-Transfer.jpg">            </div>
+   
+          <div class="aza">
+    <p><b>Recipient Account</b></p>
+    
+  <input type="tel" id="aza" name="aza" maxlength="10" placeholder="Enter 10 digits Account Number"><br>
+  
+   <select id="dropdownMenu" name="dropdownMenu">
+  <option value="Select Bank">Select Bank</option>
+  <option value="Opay">Opay</option>
+  <option value="palmpay">PalmPay</option>
+  <option value="kuda">Kuda</option>
+  <option value="access">Access Bank</option>
+    </select><br>
+               
+ <input type="text" id="name" name="name" value="✅&nbsp;&nbsp;">
+            
+      <div class="button-container">
+ <button type="submit" id="submit">Next</button>     
+            </div>
+                </div>
+
+   <div class="traffic-monitor">
+<img src="Images/Traffic-Monitor.jpg">       <br></br>      </div>
+
+      <div class="recents">
+  <p style="color: #03B776;">Recents</p>&nbsp;<p>Favourites</p>   <p style="margin-left: 110px;">🔍</p>  
+            </div>
+   <hr> 
+          <div class="all-accounts">
+            
+      <div class="accounts">
+  <p>Benjamin Bulama Anamja</p>
+  <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">2029506660 &nbsp;Kuda</p>
+  <img src="Images/Kuda-Logo.png">
+             </div>
+ <hr>         
+           <a href="">
+      <div class="accounts2">
+  <p>PAULINA HAMIDU MSHELIA</p>
+  <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">5330403346 &nbsp;Fidelity Bank</p>
+  <img src="Images/Fidelity-Logo.png">
+               </div>
+               </a>
+<hr>             
+    <div class="accounts3">
+  <p>MASE-UTEN DOGARI YIASE</p>
+  <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">2050181171 &nbsp;Zenith Bank</p>
+  <img src="Images/Zenith-Logo.png">
+             </div>
+  <hr>           
+       <div class="view-all">
+<p>View All ></p>  
+              </div>
+              </div>
+<br></br>
+
+
+
+  <br></br>
+</div>
+
+
+<script>
+document.getElementById('dropdownMenu').addEventListener('click', function() {
+    document.getElementById('name').style.display = 'flex';
+});
+</script>
+
+
+</body>
+</html>
