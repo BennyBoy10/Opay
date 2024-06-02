@@ -236,38 +236,66 @@
              </div>
 
 </div>
-
 <script>
-  document.getElementById("button").addEventListener("click", function() {
-    window.location.href = "index.html";
-  });
+    document.getElementById("button").addEventListener("click", function() {
+        window.location.href = "Index.html";
+    });
+
+    // Function to get the value of a query parameter by name
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Get the price value from the URL
+    const priceValue = getQueryParam('price');
+
+    // Display the price value in the h3 element
+    if (priceValue) {
+        document.querySelector('.price h3').textContent = `₦ ${priceValue}`;
+    }
+
+    // Function to update the current time
+    function updateTime() {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+        document.getElementById('time').textContent = now.toLocaleString('en-GB', options).replace(/,/, '');
+    }
+
+    updateTime();
+    setInterval(updateTime, 120000); // Update every 2 minutes
+
+    // Function to generate an 18-digit random number
+    function generateRandomNumber() {
+        let randomNumber = '';
+        for (let i = 0; i < 18; i++) {
+            randomNumber += Math.floor(Math.random() * 10).toString();
+        }
+        return randomNumber;
+    }
+
+    // Update the trans-ref element with the generated random number
+    document.getElementById('trans-ref').textContent = generateRandomNumber();
+
+    // Save the receipt details to localStorage
+    function saveReceipt() {
+        const receipt = {
+            amount: priceValue || "0.00",
+            date: document.getElementById('time').textContent,
+            recipient: document.getElementById('re-name').textContent,
+            account: document.getElementById('re-aza').textContent,
+            refNo: document.getElementById('trans-ref').textContent,
+            serviceAmount: getQueryParam('serviceAmount') || "0.00"
+        };
+
+        let receipts = JSON.parse(localStorage.getItem("receipts")) || [];
+        receipts.push(receipt);
+        localStorage.setItem("receipts", JSON.stringify(receipts));
+    }
+
+    saveReceipt();
 </script>
 
-<script>
-  // Function to get the value of a query parameter by name
-  function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-  }
-
-  // Get the price value from the URL
-  const priceValue = getQueryParam('price');
-
-  // Display the price value in the h3 element
-  if (priceValue) {
-      document.querySelector('.price h3').textContent = `₦ ${priceValue}`;
-  }
-
-  // Function to update the current time
-  function updateTime() {
-      const now = new Date();
-      const options = { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-      document.getElementById('time').textContent = now.toLocaleString('en-GB', options).replace(/,/, '');
-  }
-
-  updateTime();
-  setInterval(updateTime, 120000); // Update every 2 minutes
-</script>
 
 
 
