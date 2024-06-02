@@ -4,83 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
-    <title>Opay - Transaction History</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            margin: 0 auto;
-            width: 340px;
-            padding: 7px;
-            border: 1px solid transparent;
-            border-radius: 8px;
-            background-color: #F8F8FA;
-        }
-        .header {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .receipt {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #fff;
-        }
-        .receipt p {
-            margin: 5px 0;
-        }
-        .back-button {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: #00B875;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-        }
+<title>Opay - Transaction History</title>
+    
+  <style>
+ body {
+   font-family: Arial, sans-serif;
+   background-color: #fff;
+   margin: 0;
+   padding: 0;
+}
+.container {
+   margin: 0 auto;
+   width: 340px;
+   padding: 7px;
+   border: 1px solid transparent;
+   border-radius: 8px;
+   background-color: #F8F8FA;
+}
+.header {
+  text-align: center;
+  margin: 20px 0;
+}
+.receipt {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+.receipt p {
+  margin: 5px 0;
+}
+.back-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #00B875;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+  
+.clear {
+  display: flex;
+  justify-content: center;
+}      
+#clearHistoryButton {
+  margin-top: 50px;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  background-color: #00B875;
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Transaction History</h2>
-            <a href="index.html" class="back-button">Back</a>
-        </div>
-        <div id="receiptsContainer"></div>
+        <div class="container">
+          <div class="header">
+    <h2>Transaction History</h2>
+<a href="index.html" class="back-button">Back</a>
+            </div>
+<div id="receiptsContainer"></div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const receipts = JSON.parse(localStorage.getItem("receipts")) || [];
-            const receiptsContainer = document.getElementById("receiptsContainer");
 
-            if (receipts.length === 0) {
-                receiptsContainer.innerHTML = '<p>No transactions found.</p>';
-                return;
-            }
 
-            // Reverse the order of receipts to show the newest on top
-            receipts.reverse();
+   <div class="clear">
+<button type="button" id="clearHistoryButton">Clear Receipts</button>
+        </div>
 
-            receipts.forEach(receipt => {
-                const receiptElement = document.createElement("div");
-                receiptElement.className = "receipt";
-                receiptElement.innerHTML = `
-                    <p><strong>Amount:</strong> <span>&#8358;</span>${receipt.amount}</p>
-                    <p><strong>Date:</strong> ${receipt.date}</p>
-                    <p><strong>Recipient:</strong> ${receipt.recipient}</p>
-                    <p><strong>Account:</strong> ${receipt.account}</p>
-                    <p><strong>Ref No:</strong> ${receipt.refNo}</p>
-                `;
-                receiptsContainer.appendChild(receiptElement);
-            });
-        });
+<script>
+document.getElementById("clearHistoryButton").addEventListener("click", function() {
+        
+  localStorage.removeItem("receipts");
+        
+  alert("Receipts history has been cleared.");
+});   
+</script>
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const receipts = JSON.parse(localStorage.getItem("receipts")) || [];
+  const receiptsContainer = document.getElementById("receiptsContainer");
+
+  if (receipts.length === 0) {
+  receiptsContainer.innerHTML = '<p>No transactions found.</p>';
+        return;
+}
+
+// Reverse the order of receipts to show the newest on top
+      receipts.reverse();
+
+  receipts.forEach(receipt => {
+  const receiptElement = document.createElement("div");
+  receiptElement.className = "receipt";
+  receiptElement.innerHTML = `
+  
+  <p><strong>Amount:</strong> <span>&#8358;</span>${receipt.amount}</p>
+  <p><strong>Date:</strong> ${receipt.date}</p>
+  <p><strong>Recipient:</strong> ${receipt.recipient}</p>
+  <p><strong>Account:</strong> ${receipt.account}</p>
+  <p><strong>Ref No:</strong> ${receipt.refNo}</p>
+`;
+  receiptsContainer.appendChild(receiptElement);
+});
+});
     </script>
 </body>
 </html>
