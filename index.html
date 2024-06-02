@@ -188,7 +188,13 @@ margin-top: 8px;
   document.getElementById("transactionHistory").addEventListener("click", function(){
     window.location.href = "ReceiptHistory.html";
   });
+  
+ document.addEventListener("DOMContentLoaded", function() {
+    var eyeIcon = document.getElementById("eye-icon");
+    eyeIcon.click();
+});
 </script>
+
 
 <script>
 document.getElementById("eye-icon").addEventListener("click", function() {
@@ -203,8 +209,10 @@ document.getElementById("eye-icon").addEventListener("click", function() {
     eyeIcon.innerHTML = '&nbsp;<svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22 12.0002C20.2531 15.5764 15.8775 19 11.9998 19C8.12201 19 3.74646 15.5764 2 11.9998" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M22 12.0002C20.2531 8.42398 15.8782 5 12.0005 5C8.1227 5 3.74646 8.42314 2 11.9998" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
   }
 });
+
 </script>
 
 
 </body>
-</html>
+    </html>
+    
