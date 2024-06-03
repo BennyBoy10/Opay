@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
+    <title>Opay</title>
+    
+    <style>
+    
+  body {
+   font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.container {
+   margin: 0 auto;
+   width: 340px;
+   padding: 7px;
+   border: 1px solid transparent;
+   border-radius: 8px;
+   background-color: #fff;
+}
+.transfer p {
+  margin-left: 20px;
+  margin-bottom: 50px;
+  font-size: 17px;
+}
+.details {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.pic-bg {
+  padding: 1px;
+  border-radius: 10px;
+  border: 1px solid #e7e7e7;
+  background-color: transparent;
+}
+.details img {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+}
+.print {
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+.print p {
+  margin-top: -10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #595959;
+}
+.price {
+  font-size: 13px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.price input {
+  margin-top: 7px;
+  width: 300px;
+  height: 28px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  border: 1px solid transparent;
+  background-color: #F8F8FA;
+}
+  input:focus {
+    border: 1px solid #B5D5CA;
+    outline: none;
+}
+  input::placeholder {
+    color: #BABABC;
+}
+  button {
+    margin-left: 15px;
+    margin-top: 20px;
+    width: 280px;
+    height: 45px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    color: #fff;
+    background-color: #00B875;
+}
+  button:hover {
+    cursor: pointer;
+    background-color: #17B286;
+}
+
+    </style>
+</head>
+<body>
+       <div class="container">
+         <div class="transfer">
+  <p>< &nbsp;&nbsp;&nbsp;&nbsp;Transfer to Bank Account</p>
+           </div>
+        <div class="details">
+         <div class="pic-bg" id="pic-bg">
+ <img src="Images/Fidelity-Logo.png">
+            </div>
+        </div>
+        
+         <div class="print">
+<h4><span id="displayName"></span></h4>  
+<p><span id="displayDropdownMenu"></span> (<span id="displayAza"></span>)</p>
+              </div>
+              
+         <div class="price">
+  <label for="price">Amount</label><br>
+<input type="tel" id="price" name="price" placeholder="₦ 100.00-5,000,000.00" maxlength="15" required=""><br>
+      
+ <label for="remark">Remark</label><br>
+<input type="text" id="remark" name="remark" placeholder="What's this for? (Optional)"><br>
+  <button type="submit" id="submit">Confirm</button>
+        </div>
+    </div>
+<script>
+  // Retrieve the data from local storage
+  document.getElementById('displayName').innerText = localStorage.getItem('name');
+  document.getElementById('displayDropdownMenu').innerText = localStorage.getItem('dropdownMenu');
+  document.getElementById('displayAza').innerText = localStorage.getItem('aza');
+
+  // Set the bank logo image source
+  const bankLogoElement = document.querySelector('.details img');
+  const bankLogo = localStorage.getItem('bankLogo');
+  bankLogoElement.src = `Images/${bankLogo}`;
+ </script>
+
+
+<script> /*
+  // Change the height and width for the MoniePoint logo
+ if (bankLogo === 'MoniePoint-Logo.png') {
+      bankLogoElement.style.width = '50px';
+      bankLogoElement.style.height = '50px';
+  }
+  // Change the height and width for the PalmPay logo
+ if (bankLogo === 'PalmPay-Logo.png') {
+      bankLogoElement.style.width = '55px';
+      bankLogoElement.style.height = '50px';
+  }
+  // Change the height and width for the Kuda logo
+ if (bankLogo === 'Kuda-Logo.png') {
+      bankLogoElement.style.width = '50px';
+      bankLogoElement.style.height = '50px';
+  }
+  
+  // Change the pic-bg border if filename is Kuda-Logo.png
+ if (bankLogo === 'Kuda-Logo.png') {
+  document.querySelector('.pic-bg').style.borderRadius = '10px';
+document.querySelector('.pic-bg').style.height = "50px";
+}
+
+*/
+</script> 
+
+  
+
+   <script>
+    const priceInput = document.getElementById('price');
+    const submitButton = document.getElementById('submit');
+
+    // Function to format the input value with commas
+    function formatNumber(value) {
+        const cleanedValue = value.replace(/[^0-9.]/g, '');
+        const [integerPart, decimalPart] = cleanedValue.split('.');
+        const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return decimalPart !== undefined ? `${formattedInteger}.${decimalPart}` : formattedInteger;
+    }
+
+    priceInput.addEventListener('input', function (e) {
+        const inputValue = e.target.value.replace('₦ ', '');
+        const formattedValue = formatNumber(inputValue);
+        e.target.value = `₦ ${formattedValue}`;
+    });
+
+    priceInput.addEventListener('focus', function() {
+        if (this.value === '') {
+            this.value = '₦ ';
+        }
+    });
+
+    priceInput.addEventListener('keydown', function(event) {
+        if (this.selectionStart === 1 && (event.key === 'Backspace' || event.key === 'Delete')) {
+            event.preventDefault();
+        }
+    });
+
+    submitButton.addEventListener('click', function() {
+        const priceValue = priceInput.value.replace('₦ ', '');
+        
+
+        const nameValue = localStorage.getItem('name');
+        const dropdownMenuValue = localStorage.getItem('dropdownMenu');
+        const azaValue = localStorage.getItem('aza');
+
+        window.location.href = `Successful.html?price=${priceValue}&name=${nameValue}&dropdownMenu=${dropdownMenuValue}&aza=${azaValue}`;
+    });
+</script>
+
+ 
+    
+<script>
+
+document.getElementById('price').addEventListener('blur', function(){
+  
+let value = this.value;
+// Append '.00' if the value is not empty
+      if (value) {
+      value += '.00';
+    }
+        this.value = value;
+});
+  
+</script>
+    
+</body>
+</html>
