@@ -4,36 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
-<title>Opay - Transaction History</title>
+    <title>Opay - Transaction History</title>
     
-  <style>
- body {
-   font-family: Arial, sans-serif;
-   background-color: #fff;
-   margin: 0;
-   padding: 0;
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
 }
 .container {
-   margin: 0 auto;
-   width: 340px;
-   padding: 7px;
-   border: 1px solid transparent;
-   border-radius: 8px;
-   background-color: #F8F8FA;
+  margin: 0 auto;
+  width: 340px;
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #F8F8FA;
 }
 .header {
   text-align: center;
   margin: 20px 0;
-}
-.receipt {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-}
-.receipt p {
-  margin: 5px 0;
 }
 .back-button {
   display: inline-block;
@@ -45,11 +35,130 @@
   text-align: center;
   text-decoration: none;
 }
-  
+.receipt {
+  border-radius: 15px;
+  background-color: #fff;
+  margin-bottom: 100px;
+  padding: 0px;
+}
+.top {
+  display: flex;
+  align-items: center;
+}
+.top p {
+  margin-left: 34%;
+  font-size: 14px;
+}
+.top img {
+  margin-left: 20px;
+  width: 68px;
+  height: 20px;
+}
+.price {
+  text-align: center;
+}
+.price h3 {
+  color: #00B875;
+}
+.price #success {
+  margin-top: -8px;
+}
+.price #time {
+  margin-top: -8px;
+  font-size: 10px;
+  color: grey;
+}
+.trans-type {
+  font-size: 12px;
+}
+#trans-type, #money-sent {
+  display: inline-block;
+}
+#trans-type {
+  margin-left: 20px;
+  color: grey;
+}
+#money-sent {
+  margin-left: 43%;
+  font-weight: bold;
+}#re-details, #re-name {
+  display: inline-block;
+}
+.re-details {
+  margin-top: -5px;
+  font-size: 12px;
+}
+#re-details {
+  margin-left: 20px;
+  color: grey;
+}
+#re-name {
+  float: right;
+  margin-right: 15px;
+  text-align: right;
+  font-weight: bold;
+}
+#re-aza {
+  margin-top: 1px;
+  margin-right: 15px;
+  direction: rtl;
+}
+
+
+#se-details, #se-name {
+  display: inline-block;
+}
+.se-details {
+  margin-top: -5px;
+  font-size: 12px;
+}
+#se-details {
+  margin-left: 20px;
+  color: grey;
+}
+#se-name {
+  margin-left: 17%;
+  font-weight: bold;
+}
+#se-aza {
+  margin-top: -5px;
+  margin-right: 17px;
+  text-align: right;
+}
+
+
+#trans-ref, #trans-ref1 {
+  margin-top: -3px;
+  display: inline-block;
+  color: grey;
+}
+.trans-ref {
+  font-size: 12px;
+}
+#trans-ref1 {
+  margin-left: 20px;
+}
+#trans-ref {
+  margin-left: 18%;
+}
+.trans-ref {
+  font-size: 12px;
+}
+.support {
+  font-size: 10px;
+  text-align: center;
+  color: grey;
+}
+
+.extra {
+  margin-top: -20px;
+  padding: 20px;
+  font-size: 10px;
+}
 .clear {
   display: flex;
   justify-content: center;
-}      
+}
 #clearHistoryButton {
   margin-top: 50px;
   width: 150px;
@@ -58,63 +167,92 @@
   font-weight: bold;
   border: 1px solid transparent;
   background-color: #00B875;
+  color: #fff;
 }
     </style>
 </head>
 <body>
-        <div class="container">
-          <div class="header">
-    <h2>Transaction History</h2>
-<a href="index.html" class="back-button">Back</a>
-            </div>
-<div id="receiptsContainer"></div>
+    <div class="container">
+        <div class="header">
+            <h2>Transaction History</h2>
+            <a href="index.html" class="back-button">Back</a>
+        </div>
+        <div id="receiptsContainer"></div>
     </div>
 
+    <div class="clear">
+        <button type="button" id="clearHistoryButton">Clear Receipts</button>
+    </div>
 
+    <script>
+    document.getElementById("clearHistoryButton").addEventListener("click", function() {
+        localStorage.removeItem("receipts");
+        alert("Receipts history has been cleared.");
+    });   
 
-   <div class="clear">
-<button type="button" id="clearHistoryButton">Clear Receipts</button>
-        </div>
+    document.addEventListener("DOMContentLoaded", function() {
+        const receipts = JSON.parse(localStorage.getItem("receipts")) || [];
+        const receiptsContainer = document.getElementById("receiptsContainer");
 
-<script>
-document.getElementById("clearHistoryButton").addEventListener("click", function() {
-        
-  localStorage.removeItem("receipts");
-        
-  alert("Receipts history has been cleared.");
-});   
-</script>
+        if (receipts.length === 0) {
+            receiptsContainer.innerHTML = '<p>No transactions found.</p>';
+            return;
+        }
 
+        receipts.reverse();
 
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  const receipts = JSON.parse(localStorage.getItem("receipts")) || [];
-  const receiptsContainer = document.getElementById("receiptsContainer");
-
-  if (receipts.length === 0) {
-  receiptsContainer.innerHTML = '<p>No transactions found.</p>';
-        return;
-}
-
-// Reverse the order of receipts to show the newest on top
-      receipts.reverse();
-
-  receipts.forEach(receipt => {
-  const receiptElement = document.createElement("div");
-  receiptElement.className = "receipt";
-  receiptElement.innerHTML = `
-  
-  <p><strong>Amount:</strong> <span>&#8358;</span>${receipt.amount}</p>
-  <p><strong>Date:</strong> ${receipt.date}</p>
-  <p><strong>Recipient:</strong> ${receipt.recipient}</p>
-  <p><strong>Account:</strong> ${receipt.account}</p>
-  <p><strong>Ref No:</strong> ${receipt.refNo}</p>
-`;
-  receiptsContainer.appendChild(receiptElement);
-});
-});
+        receipts.forEach(receipt => {
+            const receiptElement = document.createElement("div");
+            receiptElement.className = "receipt";
+      
+            receiptElement.innerHTML = `
+  <div class="top"> <br>
+ <img src="Images/Logo-Receipt.png">
+ <p>Transaction Reciept</p>
+                </div>
+                <div class="price">
+                    <h3>&#8358; ${receipt.amount}</h3>
+                    <p id="success">SUCCESS</p>
+                    <p id="time">${receipt.date}</p>
+                    <hr style="width: 90%;">
+                </div>
+                <div class="trans-type">
+                    <p id="trans-type">Transaction Type</p>
+                    <p id="money-sent">Money sent</p>
+                </div>
+                <div class="re-details">
+                    <p id="re-details">Recipient Details</p>
+                    <p id="re-name">${receipt.recipient}</p>
+                    <p id="re-aza">${receipt.account}</p>
+                </div>
+                <div class="se-details">
+                    <p id="se-details">Sender Details</p>
+                    <p id="se-name">BENJAMIN BULAMA ANAMJA</p>
+                    <p id="se-aza">701****696</p>
+                </div>
+                <div class="trans-ref">
+                    <p id="trans-ref1">Transaction Reference</p>
+                    <p id="trans-ref">${receipt.refNo}</p>
+                </div>
+   <br></br>
+    
+              
+        <div class="support">
+   <p>Support</p>
+ <p style="color: #00B875;">customerservice@opay-inc.com</p>
+              </div>    
+     
+  <hr style="border: none; border-top: 1px dashed black; width: 85%;">
+ 
+       
+       <div class="extra">     
+<p>Enjoy a better life with OPay. Get free transfers, withdrawals, bill payments, instant loans, and good annual interest on your savings. OPay is licensed by the Central Bank of Nigeria and insured by the NDIC.</p>
+              </div>
+            `;
+            receiptsContainer.appendChild(receiptElement);
+        });
+    });
     </script>
 </body>
-</html>
+    </html>
+    
