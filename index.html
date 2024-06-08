@@ -123,6 +123,39 @@ margin-top: 8px;
 .menu img {
   border-radius: 8px;
 }
+.warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7f7f7fb3;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+.w-c {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px #0000001a;
+    max-width: 80%;
+}
+.warning button {
+  margin-bottom: 7px;
+   width: 90%;
+   height: 40px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #00B875;
+}
+
     </style>
     
 </head>
@@ -178,7 +211,18 @@ margin-top: 8px;
 
 </div>
 
-
+    <div class="warning">
+      <div class="w-c">
+ <p id="warning">OPay prohibits any cryptocurrency and all virtual currency trading. Any account in violation of this notice will be closed.</p>
+ <button onclick="hideWarning()">Got it</button>
+              </div>
+              </div>
+   
+   
+   
+   
+   
+            
 <script>
   document.getElementById("transactionHistory").addEventListener("click", function(){
     window.location.href = "ReceiptHistory.html";
@@ -190,7 +234,18 @@ margin-top: 8px;
 });
 </script>
 
+ <script>
+        // Function to show the warning modal
+        document.querySelector('.announcement').addEventListener('click', function() {
+            document.querySelector('.warning').style.display = 'flex';
+        });
 
+        // Function to hide the warning modal
+        function hideWarning() {
+            document.querySelector('.warning').style.display = 'none';
+        }
+    </script>
+    
 <script>
 document.getElementById("eye-icon").addEventListener("click", function() {
   var balanceAmount = document.getElementById("balance-amount");
@@ -209,4 +264,5 @@ document.getElementById("eye-icon").addEventListener("click", function() {
 
 
 </body>
-</html>
+     </html>
+     
