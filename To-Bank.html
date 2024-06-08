@@ -244,26 +244,30 @@ button:hover {
             </div>
    <hr> 
           <div class="all-accounts">
-            
+         
+        <a href="#" id="account1">  
       <div class="accounts">
   <p>Benjamin Bulama Anamja</p>
   <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">2029506660 &nbsp;Kuda</p>
   <img src="Images/Kuda-Logo.png">
              </div>
+             </a>
  <hr>         
-           <a href="To-Paulina.html">
+           <a href="#" id="account2">
       <div class="accounts2">
   <p>PAULINA HAMIDU MSHELIA</p>
   <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">5330403346 &nbsp;Fidelity Bank</p>
   <img src="Images/Fidelity-Logo.png">
                </div>
                </a>
-<hr>             
+<hr>     
+        <a href="#" id="account3">
     <div class="accounts3">
   <p>MASE-UTEN DOGARI YIASE</p>
   <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">2050181171 &nbsp;Zenith Bank</p>
   <img src="Images/Zenith-Logo.png">
              </div>
+             </a>
   <hr>           
        <div class="view-all">
 <p>View All ></p>  
@@ -352,6 +356,62 @@ document.getElementById('dropdownMenu').addEventListener('click', function() {
 });
 </script>
 
+<script>
+             //ACCOUNT 1
+    // Function to set input values
+    function fillDetails(accountNumber, bankName, recipientName) {
+        document.getElementById('aza').value = accountNumber;
+        document.getElementById('dropdownMenu').value = bankName;
+        document.getElementById('name').value = recipientName;
+        document.getElementById('name').style.display = 'block';
+    }
+
+    // Add event listener to account1
+    document.getElementById('account1').addEventListener('click', function() {
+        fillDetails('2029506660', 'kuda', 'Benjamin Bulama Anamja');
+    });
+
+</script>
+
+
+<script>
+             //ACCOUNT 2
+    // Function to set input values
+    function fillDetails(accountNumber, bankName, recipientName) {
+        document.getElementById('aza').value = accountNumber;
+        document.getElementById('dropdownMenu').value = bankName;
+        document.getElementById('name').value = recipientName;
+        document.getElementById('name').style.display = 'block';
+    }
+
+    // Add event listener to account2
+    document.getElementById('account2').addEventListener('click', function() {
+        fillDetails('5330403346', 'fidelity', 'PAULINA HAMIDU MSHELIA');
+    });
+
+    // Add similar event listeners for other accounts if needed
+</script>
+
+
+<script>
+             //ACCOUNT 3
+    // Function to set input values
+    function fillDetails(accountNumber, bankName, recipientName) {
+        document.getElementById('aza').value = accountNumber;
+        document.getElementById('dropdownMenu').value = bankName;
+        document.getElementById('name').value = recipientName;
+        document.getElementById('name').style.display = 'block';
+    }
+
+    // Add event listener to account3
+    document.getElementById('account3').addEventListener('click', function() {
+        fillDetails('2050181171', 'zenithbank', 'MASE-UTEN DOGARI YIASE');
+    });
+
+    // Add similar event listeners for other accounts if needed
+</script>
+
 
 </body>
-</html>
+    </html>
+      
