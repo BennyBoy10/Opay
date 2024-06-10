@@ -98,6 +98,41 @@ a {
     background-color: #17B286;
 }
 
+
+.loading-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+.loading-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.loading-circle {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #00B875;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
     </style>
 </head>
 <body>
@@ -125,6 +160,16 @@ a {
   <button type="submit" id="submit">Confirm</button>
         </div>
     </div>
+  
+  
+  <div id="loadingPopup" class="loading-popup">
+  <div class="loading-content">
+    <div class="loading-circle"></div>
+    <p>Loading...</p>
+  </div>
+</div>
+
+
 <script>
   // Retrieve the data from local storage
   document.getElementById('displayName').innerText = localStorage.getItem('name');
@@ -195,17 +240,22 @@ document.querySelector('.pic-bg').style.height = "50px";
             event.preventDefault();
         }
     });
+submitButton.addEventListener('click', function() {
+  const priceValue = priceInput.value.replace('₦ ', '');
+  const nameValue = localStorage.getItem('name');
+  const dropdownMenuValue = localStorage.getItem('dropdownMenu');
+  const azaValue = localStorage.getItem('aza');
 
-    submitButton.addEventListener('click', function() {
-        const priceValue = priceInput.value.replace('₦ ', '');
-        
+  // Show the loading pop-up
+  document.getElementById('loadingPopup').style.display = 'block';
 
-        const nameValue = localStorage.getItem('name');
-        const dropdownMenuValue = localStorage.getItem('dropdownMenu');
-        const azaValue = localStorage.getItem('aza');
+  // Delay for 2-3 seconds (2000-3000 milliseconds) before redirecting
+  setTimeout(function() {
+    window.location.href = `Successful.html?price=${priceValue}&name=${nameValue}&dropdownMenu=${dropdownMenuValue}&aza=${azaValue}`;
+  }, 1000); // Adjust the delay time as needed (in milliseconds)
+});
 
-        window.location.href = `Successful.html?price=${priceValue}&name=${nameValue}&dropdownMenu=${dropdownMenuValue}&aza=${azaValue}`;
-    });
+    
 </script>
 
  
