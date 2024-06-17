@@ -124,7 +124,7 @@ button:hover {
 .recents p {
   margin-left: 20px;
 }
-.all-accounts {
+.more-accounts {
   background-color: #fff;
 }
 .accounts {
@@ -192,6 +192,9 @@ button:hover {
   color: #a2a2a2;
   background-color: #F8F8FA;
 }
+#all-accounts {
+  display: none;
+}
     </style>
     
 </head>
@@ -243,7 +246,7 @@ button:hover {
   <p style="color: #03B776;">Recents</p>&nbsp;<p>Favourites</p>   <p style="margin-left: 110px;">🔍</p>  
             </div>
    <hr> 
-          <div class="all-accounts">
+          <div class="more-accounts">
          
         <a href="#" id="account1">  
       <div class="accounts">
@@ -269,9 +272,21 @@ button:hover {
              </div>
              </a>
   <hr>           
-       <div class="view-all">
-<p>View All ></p>  
+       <div class="view-all" id="view-all">
+      <p>View All ></p>  
               </div>
+             <br>
+      <div id="all-accounts">
+  <a href="#" id="account4">  
+      <div class="accounts">
+  <p>Benjamin Bulama Anamja</p>
+  <p style="color: #a2a2a2; margin-top: -10px; font-size: 13px;">8132012610 &nbsp;PalmPay</p>
+  <img src="Images/PalmPay-Logo.png">
+             </div>
+             </a>  
+             
+             </div>
+              
               </div>
 <br></br>
 
@@ -279,6 +294,13 @@ button:hover {
 
   <br></br>
 </div>
+
+<script>
+  document.getElementById("view-all").addEventListener("click", function() {
+  document.getElementById("view-all").style.display = "none";
+  document.getElementById("all-accounts").style.display = "flex";
+  });
+</script>
 
 <script>
 document.getElementById('dropdownMenu').addEventListener('click', function() {
@@ -375,33 +397,16 @@ document.getElementById('dropdownMenu').addEventListener('click', function() {
 
 
 <script>
-             //ACCOUNT 2
-    // Function to set input values
-    function fillDetails(accountNumber, bankName, recipientName) {
-        document.getElementById('aza').value = accountNumber;
-        document.getElementById('dropdownMenu').value = bankName;
-        document.getElementById('name').value = recipientName;
-        document.getElementById('name').style.display = 'block';
-    }
 
     // Add event listener to account2
     document.getElementById('account2').addEventListener('click', function() {
         fillDetails('5330403346', 'fidelity', 'PAULINA HAMIDU MSHELIA');
     });
 
-    // Add similar event listeners for other accounts if needed
 </script>
 
 
 <script>
-             //ACCOUNT 3
-    // Function to set input values
-    function fillDetails(accountNumber, bankName, recipientName) {
-        document.getElementById('aza').value = accountNumber;
-        document.getElementById('dropdownMenu').value = bankName;
-        document.getElementById('name').value = recipientName;
-        document.getElementById('name').style.display = 'block';
-    }
 
     // Add event listener to account3
     document.getElementById('account3').addEventListener('click', function() {
@@ -411,6 +416,16 @@ document.getElementById('dropdownMenu').addEventListener('click', function() {
     // Add similar event listeners for other accounts if needed
 </script>
 
+<script>
+
+    // Add event listener to account4
+    document.getElementById('account4').addEventListener('click', function() {
+        fillDetails('8132012610', 'palmpay', 'Benjamin Bulama Anamja');
+    });
+
+    // Add similar event listeners for other accounts if needed
+</script>
 
 </body>
-</html>
+    </html>
+    
