@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Opay</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin: 0 auto;
+      width: 340px;
+      padding: 7px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background-color: #F8F8FA;
+    }
+    .container img {
+      margin-top: -20px;
+      margin-left: -5px;
+      width: 350px;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      margin-left: -10px;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      border-top: 1px solid #ccc;
+      background-color: #fff;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      font-size: 12px;
+      color: #888; /* Default color for inactive state */
+      cursor: pointer;
+    }
+    .nav-item.active,
+    .nav-item:hover {
+      color: #00C853; /* Color for active and hover states */
+    }
+    .nav-item .nav-icon {
+      font-size: 24px; /* Size for icons */
+    }
+    .nav-item .nav-text {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"><br>
+    <div class="cards">
+      <img src="Images/Cards.jpg">
+    </div>
+    
+    <div class="navbar">
+      <div class="nav-item" id="home">
+        <i class="fas fa-home nav-icon"></i>
+        <div class="nav-text">Home</div>
+      </div>
+      <div class="nav-item" id="rewards">
+        <i class="fas fa-gift nav-icon"></i>
+        <div class="nav-text">Rewards</div>
+      </div>
+      <div class="nav-item" id="finance">
+        <i class="fas fa-chart-line nav-icon"></i>
+        <div class="nav-text">Finance</div>
+      </div>
+      <div class="nav-item" id="cards">
+        <i class="fas fa-credit-card nav-icon"></i>
+        <div class="nav-text">Cards</div>
+      </div>
+      <div class="nav-item" id="me">
+        <i class="fas fa-user nav-icon"></i>
+        <div class="nav-text">Me</div>
+      </div>
+    </div>
+  </div>
+
+ <script>
+  // Function to set active class based on the current page
+  function setActiveNavItem() {
+    const path = window.location.pathname;
+    if (path.includes('index.html')) {
+      document.getElementById("home").classList.add("active");
+    } else if (path.includes('Rewards.html')) {
+      document.getElementById("rewards").classList.add("active");
+    } else if (path.includes('Finance.html')) {
+      document.getElementById("finance").classList.add("active");
+    } else if (path.includes('Cards.html')) {
+      document.getElementById("cards").classList.add("active");
+    } else if (path.includes('Me.html')) {
+      document.getElementById("me").classList.add("active");
+    }
+  }
+
+  // Call the function to set the active class on page load
+  setActiveNavItem();
+
+  // Event listeners for navigation items
+  document.getElementById("home").addEventListener("click", function() {
+    document.getElementById("home").classList.add("active");
+    document.getElementById("rewards").classList.remove("active");
+    document.getElementById("finance").classList.remove("active");
+    document.getElementById("cards").classList.remove("active");
+    document.getElementById("me").classList.remove("active");
+    window.location.href = "../index.html";
+  });
+  document.getElementById("rewards").addEventListener("click", function() {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("rewards").classList.add("active");
+    document.getElementById("finance").classList.remove("active");
+    document.getElementById("cards").classList.remove("active");
+    document.getElementById("me").classList.remove("active");
+    window.location.href = "Rewards.html";
+  });
+  document.getElementById("finance").addEventListener("click", function() {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("rewards").classList.remove("active");
+    document.getElementById("finance").classList.add("active");
+    document.getElementById("cards").classList.remove("active");
+    document.getElementById("me").classList.remove("active");
+    window.location.href = "Finance.html";
+  });
+  document.getElementById("cards").addEventListener("click", function() {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("rewards").classList.remove("active");
+    document.getElementById("finance").classList.remove("active");
+    document.getElementById("cards").classList.add("active");
+    document.getElementById("me").classList.remove("active");
+    window.location.href = "Cards.html";
+  });
+  document.getElementById("me").addEventListener("click", function() {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("rewards").classList.remove("active");
+    document.getElementById("finance").classList.remove("active");
+    document.getElementById("cards").classList.remove("active");
+    document.getElementById("me").classList.add("active");
+    window.location.href = "Me.html";
+  });
+</script>
+
+
+</body>
+</html>
