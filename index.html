@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://i.ibb.co/bsNJkPm/Opay-Logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <title>Opay</title>
     
@@ -111,18 +112,7 @@ margin-top: 8px;
   width: 340px;
   border-radius: 7px;
 }
-.menu {
-   position: fixed;
-   bottom: 0;
-   left: 50%;
-   transform: translateX(-50%);
-   width: 340px;
-   margin: 0 auto;
-   background-color: #fff;
-}
-.menu img {
-  border-radius: 8px;
-}
+
 .warning {
   display: none;
   position: fixed;
@@ -155,6 +145,46 @@ margin-top: 8px;
     color: #fff;
     background-color: #00B875;
 }
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  margin-left: -10px;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  font-size: 12px;
+  color: #888; /* Default color for inactive state */
+  cursor: pointer;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  color: #00C853; /* Color for active and hover states */
+}
+
+.nav-item .nav-icon {
+  font-size: 24px; /* Size for icons */
+}
+
+.nav-item .nav-text {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
 
     </style>
     
@@ -205,10 +235,37 @@ margin-top: 8px;
 <img src="Images/Grab.jpg">         
              </div>
  <br></br><br>
-        <div class="menu">
-  <img src="Images/Menu.jpg">           
-            </div>
+       
+       
 
+        <div class="navbar">
+<div class="nav-item active" onclick="setActive(this)">
+<i class="fas fa-home nav-icon" id="home"></i>
+<div class="nav-text">Home</div>
+            </div>
+            
+<div class="nav-item" onclick="setActive(this)">
+<i class="fas fa-gift nav-icon" id="rewards"></i>
+<div class="nav-text">Rewards</div>
+             </div>
+             
+<div class="nav-item" onclick="setActive(this)">
+<i class="fas fa-chart-line nav-icon" id="finance"></i>
+<div class="nav-text">Finance</div>
+            </div>
+            
+<div class="nav-item" onclick="setActive(this)">
+<i class="fas fa-credit-card nav-icon" id="cards"></i>
+<div class="nav-text">Cards</div>
+         </div>
+         
+<div class="nav-item" onclick="setActive(this)">
+<i class="fas fa-user nav-icon" id="me"></i>
+  <div class="nav-text">Me</div>
+        </div>
+    </div>
+    
+    
 </div>
 
     <div class="warning">
@@ -219,9 +276,38 @@ margin-top: 8px;
               </div>
    
    
+ <script>
+  document.getElementById("home").addEventListener("click", function() {
+    window.location.href = "index.html";
+  });
+  
+  document.getElementById("rewards").addEventListener("click", function() {
+   window.location.href = "Rewards.html";
+  });
+  document.getElementById("finance").addEventListener("click", function() {
+  window.location.href = "Finance.html";
+  });
+  document.getElementById("cards").addEventListener("click", function() {
+  window.location.href = "Cards.html";
+  });
+  document.getElementById("me").addEventListener("click", function() {
+    window.location.href = "Navs/Me.html";
+  });
+ </script>  
+  
    
-   
-   
+  <script>
+function setActive(element) {
+// Remove active class from all nav-items
+document.querySelectorAll('.nav-item').forEach(item => {
+item.classList.remove('active');
+});
+// Add active class to the clicked nav-item
+element.classList.add('active');
+}
+
+    </script>
+    
             
 <script>
   document.getElementById("transactionHistory").addEventListener("click", function(){
@@ -264,5 +350,6 @@ document.getElementById("eye-icon").addEventListener("click", function() {
 
 
 </body>
-     </html>
-     
+</html>
+
+    
