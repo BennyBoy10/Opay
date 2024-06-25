@@ -13,6 +13,10 @@ body {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  color: #000000;
+}
 .container {
   margin: 0 auto;
   width: 340px;
@@ -22,18 +26,36 @@ body {
   background-color: #F8F8FA;
 }
 .header {
+  display: flex;
   text-align: center;
-  margin: 20px 0;
-}
-.back-button {
-  display: inline-block;
   margin: 10px 0;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: #00B875;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
+}
+.back {
+  
+  margin-right: 210px;
+}
+#download {
+  position: absolute;
+  top: 5px;
+  left: 75%;
+  color: #00B875;
+}
+.white-bg {
+  width: 340px;
+  background-color: #fff;
+}
+.categories {
+  display: flex;
+  margin-left: 30px;
+  font-size: 15px;
+  color: #949494;
+}
+#all-status {
+  margin-left: 80px;
+}
+.rotate {
+ display: inline-block;
+ transform: rotate(90deg);
 }
 .receipt {
   border-radius: 15px;
@@ -169,15 +191,26 @@ body {
   background-color: #00B875;
   color: #fff;
 }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2>Transaction History</h2>
-            <a href="index.html" class="back-button">Back</a>
+          <div class="white-bg">
+    <!--<h2>Transaction History</h2>-->
+<a href="index.html" class="back">&#x276E; &nbsp; Transactions</a>
+<p id="download">Download</p>
+       
+        
+    <div class="categories">
+<p id="categories">All Categories <span class="rotate">></span></p>
+<p id="all-status">All Status <span class="rotate">></span></p>
         </div>
-        <div id="receiptsContainer"></div>
+        </div>
+        </div>
+  <br>
+    <div id="receiptsContainer"></div>
     </div>
 
     <div class="clear">
@@ -254,5 +287,5 @@ body {
     });
     </script>
 </body>
-    </html>
-    
+</html>
+
